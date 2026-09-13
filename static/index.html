@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#08111f" />
+    <title>DevOps Triage · MVP</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/github.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">✦</div>
+          <div>
+            <p class="eyebrow">MVP · AGENTIC RAG</p>
+            <h1>DevOps Triage</h1>
+          </div>
+        </div>
+        <div class="status-pill"><span class="status-dot"></span><span id="healthText">Comprobando servicio…</span></div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow accent">DIAGNÓSTICO INICIAL FUNDAMENTADO</p>
+          <h2>Convierte señales dispersas en el siguiente paso seguro.</h2>
+          <p class="hero-copy">El agente consulta runbooks e incidentes históricos cuando existe evidencia suficiente y deja la decisión final en manos de un especialista.</p>
+        </div>
+        <div class="hero-orbit" aria-hidden="true"><span>KB</span><span>RAG</span><span>HITL</span></div>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="panel input-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">01 · INCIDENTE</p><h3>Cuéntame qué ocurrió</h3></div>
+            <span id="modeBadge" class="mode-badge">COMPROBANDO MODO</span>
+          </div>
+          <div class="sample-row">
+            <button class="sample" data-sample="happy">ImagePullBackOff</button>
+            <button class="sample" data-sample="uncertain">Faltan datos</button>
+            <button class="sample" data-sample="unsafe">Solicitud insegura</button>
+          </div>
+          <div class="source-switch" role="tablist" aria-label="Fuente del incidente">
+            <button id="manualMode" class="source-option active" type="button">Entrada manual</button>
+            <button id="githubMode" class="source-option" type="button">GitHub Actions</button>
+          </div>
+          <div id="githubConfig" class="github-config hidden">
+            <input id="ghOwner" autocomplete="off" placeholder="Organización / owner" />
+            <input id="ghRepository" autocomplete="off" placeholder="Repositorio" />
+            <input id="ghRunId" inputmode="numeric" autocomplete="off" placeholder="Run ID" />
+            <p>El token de solo lectura vive en el servidor y nunca se solicita aquí.</p>
+          </div>
+          <textarea id="incident" maxlength="30000" placeholder="Incluye ambiente, servicio, tecnología, mensaje de error y fragmento de log cuando estén disponibles…"></textarea>
+          <div class="input-footer"><span id="charCount">0 / 30,000</span><button id="analyze" class="primary-button"><span>Analizar incidente</span><span class="arrow">↗</span></button></div>
+          <div class="security-note"><span>◈</span><span>Los secretos se redactan antes del análisis. El agente no ejecuta comandos ni expone credenciales.</span></div>
+        </div>
+
+        <div class="panel route-panel">
+          <p class="eyebrow">02 · RUTA DEL AGENTE</p>
+          <h3>Decisión de retrieval</h3>
+          <div class="route-visual">
+            <div class="route-node active"><span class="node-icon">◎</span><div><strong>Incidente</strong><small>entrada sanitizada</small></div></div>
+            <div class="route-line"></div>
+            <div class="route-branches"><div class="route-node" id="technicalNode"><span class="node-icon">⌘</span><div><strong>KB técnico</strong><small>runbooks autorizados</small></div></div><div class="route-node" id="historyNode"><span class="node-icon">◌</span><div><strong>Histórico</strong><small>Jira resuelto</small></div></div></div>
+            <div class="route-line"></div>
+            <div class="route-node"><span class="node-icon">✓</span><div><strong>Especialista</strong><small>revisión humana</small></div></div>
+          </div>
+          <div class="trace-summary" id="traceSummary"><span class="muted">La ruta aparecerá aquí después del análisis.</span></div>
+        </div>
+      </section>
+
+      <section id="resultSection" class="result-section hidden">
+        <div class="result-header"><div><p class="eyebrow accent">03 · RESULTADO TRAZABLE</p><h3>Diagnóstico inicial</h3></div><span class="review-badge">● Revisión humana requerida</span></div>
+        <div class="result-grid">
+          <div class="diagnosis-card"><div class="diagnosis-top"><span id="category" class="category-label">—</span><span id="confidence" class="confidence">—</span></div><h4 id="message">—</h4><div id="contractAlert" class="contract-alert hidden" role="status"></div><div class="facts"><div><span>Tecnología</span><strong id="technology">—</strong></div><div><span>Error detectado</span><strong id="error">—</strong></div></div><div class="section-block"><h5>Evidencia</h5><ul id="evidence"></ul></div><div class="section-block"><h5>Causas probables</h5><ul id="causes"></ul></div></div>
+          <div class="evidence-card"><div class="card-heading"><h4>Fuentes utilizadas</h4><span class="source-count" id="sourceCount">0</span></div><div id="sources" class="source-list"></div><div class="section-block compact"><h5>Validaciones recomendadas</h5><ul id="validations"></ul></div><div id="securityAlert" class="security-alert hidden"></div></div>
+        </div>
+        <div class="feedback-bar"><div><strong>¿Te resulta útil este diagnóstico?</strong><span>Tu feedback queda asociado a la traza, sin almacenar secretos.</span></div><div class="feedback-actions"><button data-feedback="useful">Útil</button><button data-feedback="needs_correction">Necesita corrección</button><button data-feedback="unsafe">Señalar riesgo</button></div></div>
+      </section>
+
+      <footer><span>DevOps Triage MVP · asistencia, no remediación</span><span id="traceId">Sin ejecución todavía</span></footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+# Dependencia prevista para sustituir el validador stdlib por Pydantic 2
+# cuando el entorno tenga acceso al índice de paquetes.
+pydantic>=2,<3

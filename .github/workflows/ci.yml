@@ -1,0 +1,30 @@
+name: DevOps Triage MVP - CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Pruebas y validaciones
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ejecutar pruebas Python
+        run: python -m unittest discover -s tests -v
+
+      - name: Validar JavaScript del frontend
+        run: node --check static/app.js

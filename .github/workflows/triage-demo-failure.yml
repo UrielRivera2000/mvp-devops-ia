@@ -1,0 +1,25 @@
+name: DevOps Triage - Incidente demo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  simulated-image-pull-failure:
+    name: Simular ImagePullBackOff
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Emitir log de incidente sintético
+        shell: bash
+        run: |
+          echo "Environment: UAT"
+          echo "Service: api-clientes"
+          echo "Failed to pull image: unauthorized: authentication required"
+          echo "ImagePullBackOff"
+          echo "Este fallo es intencional y solo sirve como fixture de prueba."
+          exit 1
