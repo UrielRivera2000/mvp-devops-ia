@@ -29,9 +29,9 @@ from integrations.github_actions import GitHubActionsClient, GitHubActionsError
 
 ROOT = Path(__file__).resolve().parent
 STATIC_DIR = ROOT / "static"
-DEFAULT_SOURCES_DIR = (
-    ROOT.parent / "Proyecto Final" / "Fuentes_PoC_DevOps" / "poc_devops_sources"
-)
+LEGACY_SOURCES_DIR = ROOT.parent / "Proyecto Final" / "Fuentes_PoC_DevOps" / "poc_devops_sources"
+BUNDLED_SOURCES_DIR = ROOT / "poc_devops_sources"
+DEFAULT_SOURCES_DIR = LEGACY_SOURCES_DIR if LEGACY_SOURCES_DIR.is_dir() else BUNDLED_SOURCES_DIR
 SOURCES_DIR = Path(os.environ.get("MVP_SOURCES_DIR", str(DEFAULT_SOURCES_DIR)))
 MAX_INPUT_CHARS = 30_000
 MAX_BODY_BYTES = 100_000

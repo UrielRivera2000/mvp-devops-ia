@@ -34,6 +34,8 @@ $env:MVP_SOURCES_DIR = 'C:\ruta\a\poc_devops_sources'
 python app.py
 ```
 
+El repositorio incluye una copia del corpus sintético en `poc_devops_sources/`. Si no existe la carpeta hermana usada en el entorno local, la aplicación utiliza automáticamente ese corpus incluido.
+
 ## Pruebas
 
 ```powershell

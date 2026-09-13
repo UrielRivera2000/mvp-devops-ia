@@ -1,0 +1,2098 @@
+{
+  "startAt": 0,
+  "maxResults": 17,
+  "total": 17,
+  "issues": [
+    {
+      "id": "10001",
+      "key": "DEVOPS-1001",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10001",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "ImagePullBackOff por credenciales expiradas de registry",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con imagepullbackoff por credenciales expiradas de registry. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "UAT"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist01"
+        },
+        "reporter": {
+          "displayName": "dev01"
+        },
+        "created": "2026-01-12T09:14:00",
+        "updated": "2026-01-12T10:34:00",
+        "resolutiondate": "2026-01-12T10:34:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "containers",
+          "kubernetes",
+          "registry"
+        ],
+        "customfield_root_cause": "El imagePullSecret contenía credenciales expiradas para el registry privado.",
+        "customfield_resolution_steps": "Se confirmó imagen/tag; se renovó la credencial mediante el proceso autorizado; se actualizó el imagePullSecret y se verificó un pull exitoso.",
+        "customfield_error_signature": "Failed to pull image: unauthorized: authentication required | ImagePullBackOff",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Containers / Registry",
+        "customfield_affected_service": "api-clientes",
+        "customfield_pipeline_job": "deploy-uat / deploy",
+        "customfield_knowledge_article": "KB-001",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000101",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000102",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10002",
+      "key": "DEVOPS-1002",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10002",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "ImagePullBackOff por imagePullSecret inexistente",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con imagepullbackoff por imagepullsecret inexistente. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "DEV"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist02"
+        },
+        "reporter": {
+          "displayName": "dev02"
+        },
+        "created": "2026-01-20T10:14:00",
+        "updated": "2026-01-20T12:41:00",
+        "resolutiondate": "2026-01-20T12:41:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "containers",
+          "kubernetes",
+          "registry"
+        ],
+        "customfield_root_cause": "El namespace nuevo no tenía el imagePullSecret requerido y el ServiceAccount no lo referenciaba.",
+        "customfield_resolution_steps": "Se verificó el ServiceAccount; se creó el secret autorizado; se asoció y se validó el pull.",
+        "customfield_error_signature": "FailedToRetrieveImagePullSecret | ErrImagePull | ImagePullBackOff",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Containers / Registry",
+        "customfield_affected_service": "portal-api",
+        "customfield_pipeline_job": "deploy-dev / deploy",
+        "customfield_knowledge_article": "KB-001",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000201",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000202",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10003",
+      "key": "DEVOPS-1003",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10003",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "CrashLoopBackOff por variable de entorno faltante",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con crashloopbackoff por variable de entorno faltante. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "UAT"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist03"
+        },
+        "reporter": {
+          "displayName": "dev03"
+        },
+        "created": "2026-01-28T11:14:00",
+        "updated": "2026-01-28T14:48:00",
+        "resolutiondate": "2026-01-28T14:48:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "configuration",
+          "kubernetes",
+          "runtime"
+        ],
+        "customfield_root_cause": "La variable DB_SCHEMA requerida no estaba definida en el ConfigMap de UAT.",
+        "customfield_resolution_steps": "Se revisaron logs previos; se comparó configuración DEV/UAT; se agregó DB_SCHEMA por el proceso autorizado y se validó readiness.",
+        "customfield_error_signature": "Application startup failed: DB_SCHEMA is missing | CrashLoopBackOff",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Runtime / Configuration",
+        "customfield_affected_service": "boveda-api",
+        "customfield_pipeline_job": "deploy-uat / deploy",
+        "customfield_knowledge_article": "KB-002",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000301",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000302",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10004",
+      "key": "DEVOPS-1004",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10004",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "CrashLoopBackOff por endpoint de base de datos incorrecto",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con crashloopbackoff por endpoint de base de datos incorrecto. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "UAT"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist04"
+        },
+        "reporter": {
+          "displayName": "dev04"
+        },
+        "created": "2026-02-05T12:14:00",
+        "updated": "2026-02-05T13:55:00",
+        "resolutiondate": "2026-02-05T13:55:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "configuration",
+          "kubernetes",
+          "runtime"
+        ],
+        "customfield_root_cause": "El host de base de datos configurado en UAT no correspondía al endpoint autorizado.",
+        "customfield_resolution_steps": "Se comparó configuración con inventario; se corrigió el valor mediante el proceso de secretos y se verificó estabilidad.",
+        "customfield_error_signature": "SQLRecoverableException: could not establish the connection | CrashLoopBackOff",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Runtime / Configuration",
+        "customfield_affected_service": "estado-cuenta-api",
+        "customfield_pipeline_job": "deploy-uat / deploy",
+        "customfield_knowledge_article": "KB-002",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000401",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000402",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10005",
+      "key": "DEVOPS-1005",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10005",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "OOMKilled por límite de memoria insuficiente",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con oomkilled por límite de memoria insuficiente. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "UAT"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist01"
+        },
+        "reporter": {
+          "displayName": "dev05"
+        },
+        "created": "2026-02-13T13:14:00",
+        "updated": "2026-02-13T16:02:00",
+        "resolutiondate": "2026-02-13T16:02:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "capacity",
+          "kubernetes",
+          "resources"
+        ],
+        "customfield_root_cause": "El límite de 512Mi era inferior al pico observado durante el procesamiento.",
+        "customfield_resolution_steps": "Se confirmó OOMKilled; se revisó consumo; se ajustaron requests/limits con evidencia de carga y se repitió la prueba.",
+        "customfield_error_signature": "Reason: OOMKilled | Exit Code: 137",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Resources / Capacity",
+        "customfield_affected_service": "reportes-api",
+        "customfield_pipeline_job": "deploy-uat / smoke-test",
+        "customfield_knowledge_article": "KB-003",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000501",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000502",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10006",
+      "key": "DEVOPS-1006",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10006",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "OOMKilled por heap Java sin margen de memoria nativa",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con oomkilled por heap java sin margen de memoria nativa. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "DEV"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist02"
+        },
+        "reporter": {
+          "displayName": "dev06"
+        },
+        "created": "2026-02-21T09:14:00",
+        "updated": "2026-02-21T12:34:00",
+        "resolutiondate": "2026-02-21T12:34:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          },
+          {
+            "name": "Java"
+          }
+        ],
+        "labels": [
+          "capacity",
+          "java",
+          "kubernetes",
+          "resources"
+        ],
+        "customfield_root_cause": "El heap máximo de JVM no dejaba margen suficiente para memoria nativa dentro del límite del contenedor.",
+        "customfield_resolution_steps": "Se revisó configuración JVM y límite; se redujo el heap máximo y se repitió carga controlada.",
+        "customfield_error_signature": "OOMKilled | Exit Code 137 | Java process",
+        "customfield_technology": "Kubernetes / Java",
+        "customfield_category": "Resources / Capacity",
+        "customfield_affected_service": "calculo-api",
+        "customfield_pipeline_job": "deploy-dev / load-test",
+        "customfield_knowledge_article": "KB-003",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000601",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000602",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10007",
+      "key": "DEVOPS-1007",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10007",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Pipeline Maven falla por pruebas unitarias",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con pipeline maven falla por pruebas unitarias. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CI"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist03"
+        },
+        "reporter": {
+          "displayName": "dev07"
+        },
+        "created": "2026-03-01T10:14:00",
+        "updated": "2026-03-01T11:41:00",
+        "resolutiondate": "2026-03-01T11:41:00",
+        "components": [
+          {
+            "name": "Maven"
+          },
+          {
+            "name": "GitHub Actions"
+          }
+        ],
+        "labels": [
+          "cd",
+          "ci",
+          "github-actions",
+          "maven",
+          "tests"
+        ],
+        "customfield_root_cause": "Un cambio en UserService alteró el comportamiento esperado y el test quedó desactualizado.",
+        "customfield_resolution_steps": "Se revisó el primer test fallido; se reprodujo localmente; se corrigió código/test y el pipeline posterior pasó.",
+        "customfield_error_signature": "There are test failures | BUILD FAILURE | UserServiceTest",
+        "customfield_technology": "Maven / GitHub Actions",
+        "customfield_category": "CI/CD / Tests",
+        "customfield_affected_service": "usuarios-api",
+        "customfield_pipeline_job": "ci / unit-tests",
+        "customfield_knowledge_article": "KB-004",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000701",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000702",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10008",
+      "key": "DEVOPS-1008",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10008",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Pipeline Maven falla por dependencia no resoluble",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con pipeline maven falla por dependencia no resoluble. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CI"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist04"
+        },
+        "reporter": {
+          "displayName": "dev08"
+        },
+        "created": "2026-03-09T11:14:00",
+        "updated": "2026-03-09T13:48:00",
+        "resolutiondate": "2026-03-09T13:48:00",
+        "components": [
+          {
+            "name": "Maven"
+          },
+          {
+            "name": "CI/CD"
+          }
+        ],
+        "labels": [
+          "cd",
+          "ci",
+          "dependencies",
+          "maven"
+        ],
+        "customfield_root_cause": "El runner no estaba usando el repositorio corporativo correcto.",
+        "customfield_resolution_steps": "Se confirmó existencia del artefacto; se corrigió la configuración de repositorio del runner y se reejecutó el build.",
+        "customfield_error_signature": "Could not resolve dependencies | artifact not found",
+        "customfield_technology": "Maven / CI/CD",
+        "customfield_category": "CI/CD / Dependencies",
+        "customfield_affected_service": "derivados-api",
+        "customfield_pipeline_job": "ci / build",
+        "customfield_knowledge_article": "KB-004",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000801",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000802",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10009",
+      "key": "DEVOPS-1009",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10009",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Quality Gate de SonarQube falla por cobertura en código nuevo",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con quality gate de sonarqube falla por cobertura en código nuevo. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CI"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist01"
+        },
+        "reporter": {
+          "displayName": "dev09"
+        },
+        "created": "2026-03-17T12:14:00",
+        "updated": "2026-03-17T15:55:00",
+        "resolutiondate": "2026-03-17T15:55:00",
+        "components": [
+          {
+            "name": "SonarQube"
+          },
+          {
+            "name": "CI/CD"
+          }
+        ],
+        "labels": [
+          "cd",
+          "ci",
+          "quality",
+          "sonarqube"
+        ],
+        "customfield_root_cause": "Archivos nuevos quedaron sin pruebas y la cobertura cayó por debajo del umbral.",
+        "customfield_resolution_steps": "Se revisó la condición fallida; se agregaron pruebas; se ejecutó un nuevo análisis y el gate pasó.",
+        "customfield_error_signature": "QUALITY GATE STATUS: FAILED | Coverage on New Code is 42.3%",
+        "customfield_technology": "SonarQube / CI/CD",
+        "customfield_category": "CI/CD / Quality",
+        "customfield_affected_service": "portal-backend",
+        "customfield_pipeline_job": "ci / sonar",
+        "customfield_knowledge_article": "KB-005",
+        "comment": {
+          "comments": [
+            {
+              "id": "1000901",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1000902",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10010",
+      "key": "DEVOPS-1010",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10010",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "SonarQube reporta cobertura 0 por lcov ausente",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con sonarqube reporta cobertura 0 por lcov ausente. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CI"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist02"
+        },
+        "reporter": {
+          "displayName": "dev01"
+        },
+        "created": "2026-03-25T13:14:00",
+        "updated": "2026-03-25T15:02:00",
+        "resolutiondate": "2026-03-25T15:02:00",
+        "components": [
+          {
+            "name": "SonarQube"
+          },
+          {
+            "name": "Angular"
+          }
+        ],
+        "labels": [
+          "angular",
+          "cd",
+          "ci",
+          "quality",
+          "sonarqube"
+        ],
+        "customfield_root_cause": "La ruta configurada no coincidía con el lcov.info generado.",
+        "customfield_resolution_steps": "Se verificó la generación del archivo; se corrigió la ruta; se reejecutó scanner y se validó importación.",
+        "customfield_error_signature": "No LCOV files were found using sonar.javascript.lcov.reportPaths",
+        "customfield_technology": "SonarQube / Angular",
+        "customfield_category": "CI/CD / Quality",
+        "customfield_affected_service": "portal-web",
+        "customfield_pipeline_job": "ci / sonar",
+        "customfield_knowledge_article": "KB-005",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001001",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001002",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10011",
+      "key": "DEVOPS-1011",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10011",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Deployment exceeded its progress deadline por readiness 404",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con deployment exceeded its progress deadline por readiness 404. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "UAT"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist03"
+        },
+        "reporter": {
+          "displayName": "dev02"
+        },
+        "created": "2026-04-02T09:14:00",
+        "updated": "2026-04-02T11:34:00",
+        "resolutiondate": "2026-04-02T11:34:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "deployment",
+          "health",
+          "kubernetes"
+        ],
+        "customfield_root_cause": "La readiness probe apuntaba a una ruta que cambió en la nueva versión.",
+        "customfield_resolution_steps": "Se revisaron conditions y probes; se corrigió la ruta de readiness y se validó disponibilidad.",
+        "customfield_error_signature": "ProgressDeadlineExceeded | readiness probe HTTP 404",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Deployment / Health",
+        "customfield_affected_service": "monitoreo-api",
+        "customfield_pipeline_job": "deploy-uat / rollout",
+        "customfield_knowledge_article": "KB-006",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001101",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001102",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10012",
+      "key": "DEVOPS-1012",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10012",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Readiness probe falla por puerto incorrecto",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con readiness probe falla por puerto incorrecto. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "DEV"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist04"
+        },
+        "reporter": {
+          "displayName": "dev03"
+        },
+        "created": "2026-04-10T10:14:00",
+        "updated": "2026-04-10T13:41:00",
+        "resolutiondate": "2026-04-10T13:41:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "deployment",
+          "health",
+          "kubernetes"
+        ],
+        "customfield_root_cause": "La readiness consultaba 8080 y el contenedor escuchaba 8081.",
+        "customfield_resolution_steps": "Se comparó containerPort con probe; se corrigió el puerto y se verificó Ready=true.",
+        "customfield_error_signature": "Readiness probe failed: connection refused | ProgressDeadlineExceeded",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Deployment / Health",
+        "customfield_affected_service": "catalogos-api",
+        "customfield_pipeline_job": "deploy-dev / rollout",
+        "customfield_knowledge_article": "KB-006",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001201",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001202",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10013",
+      "key": "DEVOPS-1013",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10013",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Docker build falla por espacio insuficiente en runner",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con docker build falla por espacio insuficiente en runner. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CI"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist01"
+        },
+        "reporter": {
+          "displayName": "dev04"
+        },
+        "created": "2026-04-18T11:14:00",
+        "updated": "2026-04-18T12:48:00",
+        "resolutiondate": "2026-04-18T12:48:00",
+        "components": [
+          {
+            "name": "Docker"
+          },
+          {
+            "name": "CI/CD"
+          }
+        ],
+        "labels": [
+          "build",
+          "cd",
+          "ci",
+          "docker"
+        ],
+        "customfield_root_cause": "El runner self-hosted acumuló imágenes y capas antiguas hasta agotar filesystem.",
+        "customfield_resolution_steps": "Se verificó uso de disco; se aplicó el procedimiento de mantenimiento autorizado y se ajustó mantenimiento preventivo.",
+        "customfield_error_signature": "failed to register layer: no space left on device",
+        "customfield_technology": "Docker / CI/CD",
+        "customfield_category": "CI/CD / Build",
+        "customfield_affected_service": "runner-self-hosted",
+        "customfield_pipeline_job": "ci / docker-build",
+        "customfield_knowledge_article": "KB-007",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001301",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001302",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10014",
+      "key": "DEVOPS-1014",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10014",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "PVC permanece Pending por StorageClass inexistente",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con pvc permanece pending por storageclass inexistente. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "DEV"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist02"
+        },
+        "reporter": {
+          "displayName": "dev05"
+        },
+        "created": "2026-04-26T12:14:00",
+        "updated": "2026-04-26T14:55:00",
+        "resolutiondate": "2026-04-26T14:55:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "kubernetes",
+          "storage"
+        ],
+        "customfield_root_cause": "El manifiesto solicitaba una StorageClass no disponible en el cluster.",
+        "customfield_resolution_steps": "Se revisaron eventos y clases disponibles; se corrigió referencia según estándar y el PVC pasó a Bound.",
+        "customfield_error_signature": "PVC Pending | storageclass.storage.k8s.io \"fast-ssd\" not found",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Storage",
+        "customfield_affected_service": "documentos-api",
+        "customfield_pipeline_job": "deploy-dev / deploy",
+        "customfield_knowledge_article": "KB-008",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001401",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001402",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10015",
+      "key": "DEVOPS-1015",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10015",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Pod Pending por CPU insuficiente",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con pod pending por cpu insuficiente. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "UAT"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist03"
+        },
+        "reporter": {
+          "displayName": "dev06"
+        },
+        "created": "2026-05-04T13:14:00",
+        "updated": "2026-05-04T17:02:00",
+        "resolutiondate": "2026-05-04T17:02:00",
+        "components": [
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "capacity",
+          "kubernetes",
+          "resources"
+        ],
+        "customfield_root_cause": "Las requests de CPU del deployment no podían ser satisfechas por los nodos disponibles.",
+        "customfield_resolution_steps": "Se revisaron eventos y capacidad; se ajustaron requests con base en medición y se validó scheduling.",
+        "customfield_error_signature": "0/3 nodes are available: 3 Insufficient cpu | Pending",
+        "customfield_technology": "Kubernetes",
+        "customfield_category": "Resources / Capacity",
+        "customfield_affected_service": "calculo-batch",
+        "customfield_pipeline_job": "deploy-uat / rollout",
+        "customfield_knowledge_article": "KB-008",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001501",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001502",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10016",
+      "key": "DEVOPS-1016",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10016",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Checkout de repositorio falla por token revocado",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con checkout de repositorio falla por token revocado. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "CI"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": {
+          "displayName": "specialist04"
+        },
+        "reporter": {
+          "displayName": "dev07"
+        },
+        "created": "2026-05-12T09:14:00",
+        "updated": "2026-05-12T10:34:00",
+        "resolutiondate": "2026-05-12T10:34:00",
+        "components": [
+          {
+            "name": "Git"
+          },
+          {
+            "name": "CI/CD"
+          }
+        ],
+        "labels": [
+          "authentication",
+          "cd",
+          "ci",
+          "git"
+        ],
+        "customfield_root_cause": "El token del runner había sido revocado.",
+        "customfield_resolution_steps": "Se confirmó disponibilidad del repo; se generó credencial autorizada de mínimo alcance y se actualizó por el proceso seguro.",
+        "customfield_error_signature": "fatal: Authentication failed | HTTP 401",
+        "customfield_technology": "Git / CI/CD",
+        "customfield_category": "CI/CD / Authentication",
+        "customfield_affected_service": "repository-checkout",
+        "customfield_pipeline_job": "ci / checkout",
+        "customfield_knowledge_article": "KB-004",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001601",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001602",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10017",
+      "key": "DEVOPS-1017",
+      "self": "https://synthetic-poc.atlassian.net/rest/api/3/issue/10017",
+      "fields": {
+        "project": {
+          "key": "DEVOPS",
+          "name": "DevOps Operations"
+        },
+        "issuetype": {
+          "name": "Incident"
+        },
+        "summary": "Helm upgrade falla por valor requerido ausente",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Incidente sintético de PoC relacionado con helm upgrade falla por valor requerido ausente. Se requiere triage y diagnóstico inicial."
+                }
+              ]
+            }
+          ]
+        },
+        "environment": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "UAT"
+                }
+              ]
+            }
+          ]
+        },
+        "status": {
+          "name": "Done"
+        },
+        "resolution": {
+          "name": "Fixed"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "specialist01"
+        },
+        "reporter": {
+          "displayName": "dev08"
+        },
+        "created": "2026-05-20T10:14:00",
+        "updated": "2026-05-20T12:41:00",
+        "resolutiondate": "2026-05-20T12:41:00",
+        "components": [
+          {
+            "name": "Helm"
+          },
+          {
+            "name": "Kubernetes"
+          }
+        ],
+        "labels": [
+          "cd",
+          "ci",
+          "deployment",
+          "helm",
+          "kubernetes"
+        ],
+        "customfield_root_cause": "El values de UAT no definía app.image.tag requerido por la plantilla.",
+        "customfield_resolution_steps": "Se renderizó el chart; se corrigió el values; se validó helm template antes del upgrade real.",
+        "customfield_error_signature": "execution error at <required>: app.image.tag is required",
+        "customfield_technology": "Helm / Kubernetes",
+        "customfield_category": "CI/CD / Deployment",
+        "customfield_affected_service": "portal-web",
+        "customfield_pipeline_job": "deploy-uat / helm-upgrade",
+        "customfield_knowledge_article": "KB-006",
+        "comment": {
+          "comments": [
+            {
+              "id": "1001701",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Triage completado; se recopiló evidencia y se confirmó la causa probable."
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "1001702",
+              "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Corrección aplicada por el equipo responsable; validación posterior satisfactoria."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
