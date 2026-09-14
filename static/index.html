@@ -53,6 +53,7 @@
             <input id="ghRunId" inputmode="numeric" autocomplete="off" placeholder="Run ID" />
             <p>El token de solo lectura vive en el servidor y nunca se solicita aquí.</p>
           </div>
+          <div id="appNotice" class="app-notice hidden" role="alert" aria-live="assertive"><span class="notice-icon" aria-hidden="true">!</span><div><strong id="noticeTitle">Revisa los datos</strong><span id="noticeMessage"></span></div><button id="noticeClose" type="button" aria-label="Cerrar aviso">×</button></div>
           <textarea id="incident" maxlength="30000" placeholder="Incluye ambiente, servicio, tecnología, mensaje de error y fragmento de log cuando estén disponibles…"></textarea>
           <div class="input-footer"><span id="charCount">0 / 30,000</span><button id="analyze" class="primary-button"><span>Analizar incidente</span><span class="arrow">↗</span></button></div>
           <div class="security-note"><span>◈</span><span>Los secretos se redactan antes del análisis. El agente no ejecuta comandos ni expone credenciales.</span></div>
@@ -76,7 +77,7 @@
         <div class="result-header"><div><p class="eyebrow accent">03 · RESULTADO TRAZABLE</p><h3>Diagnóstico inicial</h3></div><span class="review-badge">● Revisión humana requerida</span></div>
         <div class="result-grid">
           <div class="diagnosis-card"><div class="diagnosis-top"><span id="category" class="category-label">—</span><span id="confidence" class="confidence">—</span></div><h4 id="message">—</h4><div id="contractAlert" class="contract-alert hidden" role="status"></div><div class="facts"><div><span>Tecnología</span><strong id="technology">—</strong></div><div><span>Error detectado</span><strong id="error">—</strong></div></div><div class="section-block"><h5>Evidencia</h5><ul id="evidence"></ul></div><div class="section-block"><h5>Causas probables</h5><ul id="causes"></ul></div></div>
-          <div class="evidence-card"><div class="card-heading"><h4>Fuentes utilizadas</h4><span class="source-count" id="sourceCount">0</span></div><div id="sources" class="source-list"></div><div class="section-block compact"><h5>Validaciones recomendadas</h5><ul id="validations"></ul></div><div id="securityAlert" class="security-alert hidden"></div></div>
+          <div class="evidence-card"><div class="card-heading"><div><h4>Fuentes utilizadas</h4><span class="card-caption">Haz clic en una referencia para ver el detalle recuperado</span></div><span class="source-count" id="sourceCount">0</span></div><div id="sources" class="source-list"></div><div class="section-block compact"><h5>Validaciones recomendadas</h5><ul id="validations"></ul></div><div id="securityAlert" class="security-alert hidden"></div></div>
         </div>
         <div class="feedback-bar"><div><strong>¿Te resulta útil este diagnóstico?</strong><span>Tu feedback queda asociado a la traza, sin almacenar secretos.</span></div><div class="feedback-actions"><button data-feedback="useful">Útil</button><button data-feedback="needs_correction">Necesita corrección</button><button data-feedback="unsafe">Señalar riesgo</button></div></div>
       </section>

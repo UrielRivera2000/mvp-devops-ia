@@ -13,6 +13,18 @@ Descripción: Mi deployment no funciona. No tengo el log ni el mensaje de error.
 const $ = (id) => document.getElementById(id);
 let lastTraceId = null;
 let inputMode = "manual";
+const GITHUB_NAME_PATTERN = /^[A-Za-z0-9_.-]{1,100}$/;
+
+function showNotice(message, title = "Revisa los datos") {
+  $("noticeTitle").textContent = title;
+  $("noticeMessage").textContent = message;
+  $("appNotice").classList.remove("hidden");
+}
+
+function clearNotice() {
+  $("noticeMessage").textContent = "";
+  $("appNotice").classList.add("hidden");
+}
 
 function listInto(id, values) {
   const target = $(id);
@@ -42,13 +54,27 @@ function renderSources(retrieval) {
   const target = $("sources");
   target.replaceChildren();
   sources.forEach((source) => {
-    const item = document.createElement("div");
+    const item = document.createElement("details");
     item.className = "source-item";
+    const summary = document.createElement("summary");
     const title = document.createElement("strong");
     title.textContent = source.source_id;
     const detail = document.createElement("span");
     detail.textContent = `${source.source_type === "technical_kb" ? "Runbook técnico" : "Incidente histórico"} · evidencia recuperada`;
-    item.append(title, detail);
+    summary.append(title, detail);
+    const excerptLabel = document.createElement("span");
+    excerptLabel.className = "source-detail-label";
+    excerptLabel.textContent = "Fragmento recuperado";
+    const excerpt = document.createElement("p");
+    excerpt.className = "source-excerpt";
+    excerpt.textContent = source.excerpt || "No hay fragmento disponible.";
+    const metadata = document.createElement("span");
+    metadata.className = "source-meta";
+    const metadataText = Object.entries(source.metadata || {})
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(" · ");
+    metadata.textContent = `Puntuación: ${source.score ?? 0}${metadataText ? ` · ${metadataText}` : ""}`;
+    item.append(summary, excerptLabel, excerpt, metadata);
     target.appendChild(item);
   });
   if (!sources.length) {
@@ -96,8 +122,37 @@ function renderResult(result) {
 async function analyze() {
   const button = $("analyze");
   const incident = $("incident").value.trim();
-  if (inputMode === "manual" && !incident) { $("incident").focus(); return; }
-  if (inputMode === "github" && (!$("ghOwner").value.trim() || !$("ghRepository").value.trim() || !$("ghRunId").value.trim())) { alert("Completa owner, repositorio y Run ID."); return; }
+  clearNotice();
+  if (inputMode === "manual" && !incident) {
+    showNotice("Escribe una descripción o utiliza uno de los casos de ejemplo.", "Falta el incidente");
+    $("incident").focus();
+    return;
+  }
+  if (inputMode === "github") {
+    const owner = $("ghOwner").value.trim();
+    const repository = $("ghRepository").value.trim();
+    const runIdText = $("ghRunId").value.trim();
+    if (!owner || !repository || !runIdText) {
+      showNotice("Completa owner, repositorio y Run ID antes de continuar.");
+      return;
+    }
+    if (!GITHUB_NAME_PATTERN.test(owner)) {
+      showNotice("El owner solo puede contener letras, números, punto, guion y guion bajo.", "Owner inválido");
+      $("ghOwner").focus();
+      return;
+    }
+    if (!GITHUB_NAME_PATTERN.test(repository)) {
+      showNotice("El nombre del repositorio solo puede contener letras, números, punto, guion y guion bajo.", "Repositorio inválido");
+      $("ghRepository").focus();
+      return;
+    }
+    const runId = Number(runIdText);
+    if (!Number.isSafeInteger(runId) || runId <= 0) {
+      showNotice("El Run ID debe ser un número entero positivo.", "Run ID inválido");
+      $("ghRunId").focus();
+      return;
+    }
+  }
   button.disabled = true;
   button.querySelector("span").textContent = "Analizando…";
   try {
@@ -105,10 +160,10 @@ async function analyze() {
     const body = inputMode === "github" ? { owner: $("ghOwner").value.trim(), repository: $("ghRepository").value.trim(), run_id: Number($("ghRunId").value) } : { incident, source: "manual" };
     const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
     const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || "No se pudo analizar el incidente.");
+    if (!response.ok) throw new Error(inputMode === "github" ? "No se pudo consultar ese workflow. Verifica owner, repositorio, Run ID y permisos de lectura." : (payload.error || "No se pudo analizar el incidente."));
     renderResult(payload);
   } catch (error) {
-    alert(error.message);
+    showNotice(error.message, "No se pudo completar el análisis");
   } finally {
     button.disabled = false;
     button.querySelector("span").textContent = "Analizar incidente";
@@ -117,6 +172,7 @@ async function analyze() {
 
 function setInputMode(mode) {
   inputMode = mode;
+  clearNotice();
   $("manualMode").classList.toggle("active", mode === "manual");
   $("githubMode").classList.toggle("active", mode === "github");
   $("githubConfig").classList.toggle("hidden", mode !== "github");
@@ -131,10 +187,11 @@ async function sendFeedback(label, button) {
     if (!response.ok) throw new Error("No se pudo guardar el feedback.");
     document.querySelectorAll("[data-feedback]").forEach((item) => item.classList.remove("sent"));
     button.classList.add("sent");
-  } catch (error) { alert(error.message); }
+  } catch (error) { showNotice(error.message, "No se pudo guardar el feedback"); }
 }
 
 $("incident").addEventListener("input", (event) => { $("charCount").textContent = `${event.target.value.length.toLocaleString("es-MX")} / 30,000`; });
+$("noticeClose").addEventListener("click", clearNotice);
 $("analyze").addEventListener("click", analyze);
 $("manualMode").addEventListener("click", () => setInputMode("manual"));
 $("githubMode").addEventListener("click", () => setInputMode("github"));
