@@ -9,6 +9,7 @@ import urllib.request
 import zipfile
 from dataclasses import dataclass
 from typing import Any
+from urllib.parse import urlparse
 
 from contracts import IncidentInput
 
@@ -21,6 +22,25 @@ _SECRET_PATTERNS = [
     (re.compile(r"(?i)(authorization\s*:\s*bearer\s+)[A-Za-z0-9._~+/=-]+"), r"\1[REDACTED]"),
     (re.compile(r"(?i)\b(password|passwd|pwd|token|secret|api[_-]?key)\s*[:=]\s*[^\s,;]+"), r"\1=[REDACTED]"),
 ]
+
+
+class _SafeRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Do not forward GitHub credentials to a different host."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected is None:
+            return None
+        original_host = urlparse(req.full_url).netloc.lower()
+        redirected_host = urlparse(newurl).netloc.lower()
+        if original_host != redirected_host:
+            for header_name in ("Authorization", "authorization"):
+                redirected.headers.pop(header_name, None)
+                redirected.unredirected_hdrs.pop(header_name, None)
+        return redirected
+
+
+_SAFE_OPENER = urllib.request.build_opener(_SafeRedirectHandler())
 
 
 def _sanitize_remote_text(text: str) -> str:
@@ -132,7 +152,7 @@ class GitHubActionsClient:
             method="GET",
         )
         try:
-            with urllib.request.urlopen(request, timeout=self.timeout_seconds) as response:
+            with _SAFE_OPENER.open(request, timeout=self.timeout_seconds) as response:
                 content_length = response.headers.get("Content-Length")
                 if content_length and int(content_length) > self.max_response_bytes:
                     raise GitHubActionsError("Respuesta de GitHub demasiado grande")
