@@ -96,16 +96,16 @@ $env:GITHUB_READ_TOKEN = 'token-de-solo-lectura'
 python app.py
 ```
 
-La prueba real del proveedor y del conector no se ejecutó en este entorno porque ninguna de esas variables está configurada.
+El proveedor LLM se prueba desde la sesión local donde está configurada `OPENROUTER_API_KEY`. El conector GitHub Actions incluye un workflow demo reproducible y se validó con una ejecución real del repositorio.
 
 Pydantic está declarado en `requirements.txt`, pero no pudo descargarse en el entorno actual. Mientras tanto, `contracts.py` aplica validación estricta con la librería estándar y rechaza tipos inválidos sin convertirlos.
 
 ## Seguridad del primer slice
 
-El modo actual es `local_demo`: no llama a un proveedor LLM, no lee variables de entorno como secretos, no tiene shell, no ejecuta herramientas externas y escucha solo en `127.0.0.1` por defecto.
+El modo local por defecto es `local_demo`; cuando se configura `MVP_LLM_PROVIDER=openrouter`, el servicio usa el proveedor LLM seleccionado. En ambos modos no tiene shell ni remediación y escucha solo en `127.0.0.1` por defecto.
 
 La entrada y las fuentes se tratan como datos no confiables. Los patrones conocidos de secretos se redactan y las solicitudes para revelar prompts, credenciales o ejecutar acciones mutantes se bloquean. Esto es defensa en profundidad, no una garantía absoluta: antes de exponerlo fuera de localhost deben añadirse autenticación, autorización, gestión de secretos, límites operativos y pruebas de seguridad adicionales.
 
-## Próximo paso pendiente de aprobación
+## Estado de integración
 
-Agregar el adaptador de proveedor/modelo y structured output real únicamente después de definir proveedor, privacidad, credenciales y plataforma CI/CD disponibles. La PoC original permanece sin modificar.
+El adaptador OpenRouter es opt-in y conserva la validación estricta del contrato. GitHub Actions dispone de un CI automático y un workflow demo manual para alimentar un incidente sintético al conector de solo lectura. La PoC original permanece sin modificar.
